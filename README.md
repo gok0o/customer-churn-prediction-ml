@@ -1,62 +1,120 @@
-# Customer Churn Prediction using Machine Learning
+🚀 Customer Churn Prediction API (Production ML System)
 
-* Problem Statement
+📌 Overview
 
-Customer churn is a critical challenge for businesses. The goal of this project is to build a machine learning model that can accurately identify customers who are likely to churn, with a focus on minimizing false negatives.
+This project implements an end-to-end machine learning system to predict customer churn using a trained SVM model.
+The system is deployed as a FastAPI service and fully containerized using Docker for production readiness.
 
-* Dataset
+---
 
-Customer transactional and behavioral data
-Target variable: churn (1 = churn, 0 = non-churn)
+🧠 Features
 
-* Approach
+- End-to-end ML pipeline (preprocessing + model)
+- Real-time prediction API using FastAPI
+- Dockerized deployment (portable across environments)
+- Structured production-ready project design
+- Handles class imbalance using SMOTE
+- Model optimized for recall (churn detection priority)
 
-Performed data preprocessing and feature encoding
-Handled class imbalance using SMOTE
+---
 
+⚙️ Tech Stack
 
+- Python
+- Scikit-learn
+- FastAPI
+- Docker
+- Pandas / NumPy
 
-Trained multiple classification models:
+---
 
-Logistic Regression
-KNN
-Decision Tree
-Random Forest
-SVM
+🧱 Project Structure
 
-Selected final model based on recall rather than accuracy
-Tuned SVM hyperparameters using RandomizedSearchCV
-Interpreted churn drivers using Random Forest feature importance
+customer-churn-prediction-ml/
+│
+├── app/                # FastAPI application
+├── models/             # Saved ML model
+├── train/              # Training scripts
+├── notebooks/          # Experimentation (Jupyter)
+├── Dockerfile          # Container setup
+├── requirements.txt
+└── README.md
 
+---
 
+🚀 Run with Docker
 
-* Results
+docker build -t churn-api .
+docker run -p 8000:8000 churn-api
 
-Achieved 90% recall for churn customers using tuned SVM
-Demonstrated trade-off between recall and accuracy
-Identified key churn drivers:
-Average purchase value
-Purchase frequency
-Discount dependency
+Then open:
 
+👉 http://127.0.0.1:8000/docs
 
+---
 
-* Key Insights
+🔌 API Endpoint
 
-Churn is primarily driven by changes in customer purchasing behavior
-Behavioral features are more predictive than demographic attributes
-Early decline in spending and frequency indicates churn risk
+POST "/predict"
 
+Example Input:
 
+{
+  "age": 35,
+  "income_bracket": "Medium",
+  "membership_years": 2,
+  "marital_status": "Single",
+  "occupation": "Engineer",
+  "product_category": "Electronics",
+  "avg_purchase_value": 200,
+  "purchase_frequency": "Monthly",
+  "avg_discount_used": 10,
+  "online_purchases": 5,
+  "in_store_purchases": 3,
+  "total_transactions": 20,
+  "total_items_purchased": 50,
+  "promotion_effectiveness": "High"
+}
 
-* Tech Stack
+Example Output:
 
-Python
-Pandas, NumPy
-Scikit-learn
-Imbalanced-learn (SMOTE)
-Matplotlib / Seaborn
+{
+  "churn_prediction": 0,
+  "churn_probability": 0.23
+}
 
-* Conclusion
+---
 
-This project demonstrates an end-to-end machine learning workflow with business-driven evaluation, proper handling of class imbalance, and model explainability.
+📊 Model Details
+
+- Algorithm: Support Vector Machine (SVM)
+- Preprocessing: Scaling + Encoding Pipeline
+- Class imbalance handled using SMOTE
+- Optimized for recall to minimize false negatives
+
+---
+
+📈 Results
+
+- Achieved ~90% recall on churn class
+- Identified key churn drivers:
+  - Purchase frequency
+  - Discount usage
+  - Customer spending patterns
+
+---
+
+🧠 Key Insight
+
+Customer churn is primarily driven by behavioral changes rather than demographic attributes.
+Early decline in engagement is a strong churn indicator.
+
+---
+
+🔥 Why This Project Stands Out
+
+Unlike basic ML projects, this system:
+
+- Serves predictions via API
+- Is fully containerized using Docker
+- Follows production-level architecture
