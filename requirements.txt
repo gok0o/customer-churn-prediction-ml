@@ -1,6 +1,8 @@
-numpy
+fastapi
+uvicorn
 pandas
+numpy
 scikit-learn
+joblib
+pydantic
 imbalanced-learn
-matplotlib
-seaborn
