@@ -1,35 +1,45 @@
-🚀 Customer Churn Prediction API (Production ML System)
+# 🚀 Customer Churn Prediction API (Production ML System)
 
-📌 Overview
+## 🌐 Live Demo
 
-This project implements an end-to-end machine learning system to predict customer churn using a trained SVM model.
-The system is deployed as a FastAPI service and fully containerized using Docker for production readiness.
+🔗 **API Docs (Swagger UI):**
+https://churn-api-scp5.onrender.com/docs
 
----
-
-🧠 Features
-
-- End-to-end ML pipeline (preprocessing + model)
-- Real-time prediction API using FastAPI
-- Dockerized deployment (portable across environments)
-- Structured production-ready project design
-- Handles class imbalance using SMOTE
-- Model optimized for recall (churn detection priority)
+👉 Try it directly in your browser — no setup required.
 
 ---
 
-⚙️ Tech Stack
+## 📌 Overview
 
-- Python
-- Scikit-learn
-- FastAPI
-- Docker
-- Pandas / NumPy
+This project implements an **end-to-end machine learning system** to predict customer churn using a trained SVM model.
+The system is deployed as a **FastAPI service** and fully containerized using **Docker** for production readiness.
 
 ---
 
-🧱 Project Structure
+## 🧠 Features
 
+* End-to-end ML pipeline (preprocessing + model)
+* Real-time prediction API using FastAPI
+* Dockerized deployment (portable across environments)
+* Structured production-ready project design
+* Handles class imbalance using SMOTE
+* Model optimized for recall (churn detection priority)
+
+---
+
+## ⚙️ Tech Stack
+
+* Python
+* Scikit-learn
+* FastAPI
+* Docker
+* Pandas / NumPy
+
+---
+
+## 🧱 Project Structure
+
+```
 customer-churn-prediction-ml/
 │
 ├── app/                # FastAPI application
@@ -39,26 +49,29 @@ customer-churn-prediction-ml/
 ├── Dockerfile          # Container setup
 ├── requirements.txt
 └── README.md
+```
 
 ---
 
-🚀 Run with Docker
+## 🚀 Run Locally with Docker
 
+```bash
 docker build -t churn-api .
 docker run -p 8000:8000 churn-api
+```
 
 Then open:
-
 👉 http://127.0.0.1:8000/docs
 
 ---
 
-🔌 API Endpoint
+## 🔌 API Endpoint
 
-POST "/predict"
+### POST `/predict`
 
-Example Input:
+### Example Input:
 
+```json
 {
   "age": 35,
   "income_bracket": "Medium",
@@ -75,46 +88,57 @@ Example Input:
   "total_items_purchased": 50,
   "promotion_effectiveness": "High"
 }
+```
 
-Example Output:
+### Example Output:
 
+```json
 {
   "churn_prediction": 0,
   "churn_probability": 0.23
 }
+```
 
 ---
 
-📊 Model Details
+## 📊 Model Details
 
-- Algorithm: Support Vector Machine (SVM)
-- Preprocessing: Scaling + Encoding Pipeline
-- Class imbalance handled using SMOTE
-- Optimized for recall to minimize false negatives
-
----
-
-📈 Results
-
-- Achieved ~90% recall on churn class
-- Identified key churn drivers:
-  - Purchase frequency
-  - Discount usage
-  - Customer spending patterns
+* Algorithm: Support Vector Machine (SVM)
+* Preprocessing: Scaling + Encoding Pipeline
+* Class imbalance handled using SMOTE
+* Optimized for recall to minimize false negatives
 
 ---
 
-🧠 Key Insight
+## 📈 Results
 
-Customer churn is primarily driven by behavioral changes rather than demographic attributes.
+* Achieved ~90% recall on churn class
+* Identified key churn drivers:
+
+  * Purchase frequency
+  * Discount usage
+  * Customer spending patterns
+
+---
+
+## 🧠 Key Insight
+
+Customer churn is primarily driven by **behavioral changes rather than demographic attributes**.
 Early decline in engagement is a strong churn indicator.
 
 ---
 
-🔥 Why This Project Stands Out
+## 🔥 Why This Project Stands Out
 
 Unlike basic ML projects, this system:
 
-- Serves predictions via API
-- Is fully containerized using Docker
-- Follows production-level architecture
+* Serves predictions via a live API
+* Is fully containerized using Docker
+* Follows production-level architecture
+* Is deployed and publicly accessible
+
+---
+
+## 📌 Author
+
+Built by Gokul M
